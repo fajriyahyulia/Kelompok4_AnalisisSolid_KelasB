@@ -4,17 +4,21 @@
 
 from abstraksi import HewanBase, KandangBase
 
-# SOLUSI SRP + DIP
+# ============================================
+# VIKO - SRP + DIP
+# ============================================
+# SRP: Class Kandang hanya bertanggung jawab
+#      menyimpan hewan dan membersihkan kandang
+# DIP: Kandang inherit KandangBase (abstraksi)
+#      bukan class konkret langsung
+# ============================================
+
 class Kandang(KandangBase):
-    """Kandang konkret, hanya bertanggung jawab menyimpan hewan"""
-    def __init__(self):
+    """Kandang konkret inherit KandangBase (DIP)"""
+    def __init__(self, nama_kandang):
+        self.nama_kandang = nama_kandang
         self.hewan_list = []
 
     def tambah_hewan(self, hewan: HewanBase):
         self.hewan_list.append(hewan)
-
-    def get_semua_hewan(self):
-        return self.hewan_list
-
-    def bersihkan_kandang(self):
-        print("Kandang dibersihkan.")
+        print(f"{hewan.nama} ditambahk
