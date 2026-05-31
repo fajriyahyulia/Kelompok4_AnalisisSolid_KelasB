@@ -1,9 +1,13 @@
 # main.py - File integrasi semua solusi SOLID
-# Dibuat oleh: Fajriya (Ketua)
+# Dibuat oleh: Fajriyah
 
-from hewan_solusi import Elang, Ayam, Singa, Ikan, Bebek, Sapi, Penyu, Burung
-from kandang_solusi import Kandang
-from kebunbinatang_solusi import KebunBinatang
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
+from hewan.hewan_terbang import Elang, Burung, Ayam, Bebek, Singa, Sapi, Ikan, Penyu
+from kandang.kandang import Kandang
+from kebun_binatang.kebun_binatang import KebunBinatang
 
 if __name__ == "__main__":
     print("=== Kelompok 4 - Solusi Prinsip SOLID ===")
@@ -14,20 +18,19 @@ if __name__ == "__main__":
     # Tambah hewan
     print("\n--- Menambah Hewan ---")
     kandang.tambah_hewan(Elang("Elang Jawa", "Jawa"))
-    kandang.tambah_hewan(Ayam("Ayam Kampung", "Indonesia"))
-    kandang.tambah_hewan(Singa("Singa Afrika", "Afrika"))
-    kandang.tambah_hewan(Ikan("Ikan Nemo", "Laut Coral"))
-    kandang.tambah_hewan(Bebek("Bebek Peking", "China"))
-    kandang.tambah_hewan(Sapi("Sapi Jawa", "Jawa"))
-    kandang.tambah_hewan(Penyu("Penyu Hijau", "Samudra"))
     kandang.tambah_hewan(Burung("Burung Pipit", "Indonesia"))
+    kandang.tambah_hewan(Ayam("Ayam Kampung", "Indonesia"))
+    kandang.tambah_hewan(Bebek("Bebek Peking", "China"))
+    kandang.tambah_hewan(Singa("Singa Afrika", "Afrika"))
+    kandang.tambah_hewan(Sapi("Sapi Jawa", "Jawa"))
+    kandang.tambah_hewan(Ikan("Ikan Nemo", "Laut Coral"))
+    kandang.tambah_hewan(Penyu("Penyu Hijau", "Samudra"))
 
-    # Rawat semua hewan
+    # Operasional harian
     kebun = KebunBinatang(kandang)
-    kebun.rawat_semua_hewan()
+    kebun.operasional_harian()
 
     # Bersihkan kandang
-    print("\n--- Kebersihan Kandang ---")
-    kandang.bersihkan_kandang()
+    kebun.bersihkan()
 
     print("\nSelesai!")
