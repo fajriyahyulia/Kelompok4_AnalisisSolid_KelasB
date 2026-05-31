@@ -1,20 +1,51 @@
-# Kelompok 4 - Analisis Prinsip SOLID
+# 🐾 Kelompok 4 - Analisis Prinsip SOLID
 
-## Anggota & Pembagian Tugas
+Proyek ini merupakan latihan analisis dan penerapan prinsip SOLID pada kode Python sederhana tentang sistem kebun binatang.
+
+---
+
+## 👥 Anggota & Pembagian Tugas
+
 | Nama | Branch | Tugas |
 |------|--------|-------|
 | Fajriya (Ketua) | main | Setup repo, integrasi, README |
 | Fatimah | fatimah-hewan-srp-isp | Analisis & solusi SRP + ISP pada class Hewan |
-| Rahma | rahma-hewan-lsp | Solusi LSP + subclass Burung, Ikan, dll |
+| Rahma | rahma-hewan-lsp | Analisis & solusi LSP + subclass hewan |
 | Viko | viko-kandang-srp-dip | Analisis & solusi SRP + DIP pada class Kandang |
 | Wijang | wijang-kebunbinatang-ocp | Analisis & solusi OCP pada KebunBinatang |
-| Abid | abid-kebunbinatang-dip | Solusi DIP pada KebunBinatang |
+| Abid | abid-kebunbinatang-dip | Analisis & solusi DIP pada KebunBinatang |
 
 ---
 
-## Analisis Prinsip SOLID pada Kode Awal
+## 📂 Struktur Folder
 
-### Kode Awal (Sebelum Diperbaiki)
+```
+Kelompok4_AnalisisSolid_KelasB/
+├── hewan.py              
+├── README.md             
+└── solusi/
+    ├── antarmuka/
+    │   ├── bisa_terbang.py
+    │   ├── bisa_berenang.py
+    │   └── bisa_berlari.py
+    ├── hewan/
+    │   ├── hewan.py
+    │   ├── hewan_darat.py
+    │   └── hewan_terbang.py
+    ├── kandang/
+    │   └── kandang.py
+    ├── layanan/
+    │   ├── perawatan.py
+    │   └── pemberian_makan.py
+    ├── kebun_binatang/
+    │   └── kebun_binatang.py
+    └── main.py
+```
+
+---
+
+## 🔍 Kode Awal (Sebelum Diperbaiki)
+
 ```python
 class Hewan:
     def __init__(self, nama, jenis):
@@ -44,70 +75,73 @@ class KebunBinatang:
 
 ---
 
-## Prinsip SOLID yang Dilanggar
+## ❌ Analisis Pelanggaran SOLID
 
-### ❌ 1. SRP - Single Responsibility Principle (Dilanggar)
-**Prinsip:** Setiap class hanya boleh punya satu tanggung jawab.
-
-**Pelanggaran pada class `Hewan`:**
-- Class `Hewan` punya dua tanggung jawab sekaligus: menyimpan data hewan (`nama`, `jenis`) dan mendefinisikan perilaku hewan (`makan`, `terbang`).
-- Method `terbang()` tidak relevan untuk semua jenis hewan (contoh: ikan tidak bisa terbang).
-
-**Pelanggaran pada class `Kandang`:**
-- Class `Kandang` bertanggung jawab menyimpan daftar hewan sekaligus membersihkan kandang.
-
----
-
-### ❌ 2. OCP - Open/Closed Principle (Dilanggar)
-**Prinsip:** Class terbuka untuk ekstensi, tertutup untuk modifikasi.
-
-**Pelanggaran pada class `KebunBinatang`:**
-- Method `rawat_semua_hewan()` langsung memanggil `hewan.terbang()` untuk semua hewan.
-- Jika ada hewan baru yang tidak bisa terbang, kita harus **mengubah** kode `KebunBinatang`, bukan hanya menambah class baru.
-
----
-
-### ❌ 3. LSP - Liskov Substitution Principle (Dilanggar)
-**Prinsip:** Subclass harus bisa menggantikan parent class tanpa merusak program.
-
+### 1. SRP - Single Responsibility Principle
 **Pelanggaran:**
-- Jika dibuat subclass `Ikan(Hewan)`, method `terbang()` tetap ada padahal ikan tidak bisa terbang.
-- Memanggil `ikan.terbang()` akan menghasilkan perilaku yang tidak masuk akal.
+- Class `Hewan` punya dua tanggung jawab: menyimpan data sekaligus mendefinisikan perilaku hewan.
+- Method `terbang()` tidak relevan untuk semua jenis hewan, seperti ikan atau sapi.
+
+**Solusi:** Pisahkan data hewan ke `Hewan` (base class), perilaku ke subclass masing-masing, dan tanggung jawab pembersihan kandang ke class `Perawatan` tersendiri.
 
 ---
 
-### ❌ 4. ISP - Interface Segregation Principle (Dilanggar)
-**Prinsip:** Class tidak boleh dipaksa mengimplementasi method yang tidak dibutuhkan.
-
+### 2. OCP - Open/Closed Principle
 **Pelanggaran:**
-- Semua hewan "dipaksa" punya method `terbang()` padahal tidak semua hewan bisa terbang.
-- Seharusnya kemampuan terbang dipisah ke interface/class tersendiri.
+- Method `rawat_semua_hewan()` selalu memanggil `hewan.terbang()` untuk semua hewan tanpa terkecuali.
+- Jika ingin menambah hewan baru, kita terpaksa mengubah kode yang sudah ada.
+
+**Solusi:** Gunakan `isinstance` check sehingga `KebunBinatang` tidak perlu diubah jika ada hewan atau kemampuan baru.
 
 ---
 
-### ❌ 5. DIP - Dependency Inversion Principle (Dilanggar)
-**Prinsip:** Class tingkat tinggi tidak boleh bergantung langsung ke class tingkat rendah, tapi ke abstraksi.
+### 3. LSP - Liskov Substitution Principle
+**Pelanggaran:**
+- Jika dibuat subclass `Sapi(Hewan)`, method `terbang()` tetap ada padahal sapi tidak bisa terbang.
+- Memanggil `sapi.terbang()` menghasilkan perilaku yang tidak logis.
 
-**Pelanggaran pada class `KebunBinatang`:**
-- `KebunBinatang` langsung membuat objek `Kandang()` di dalam `__init__`.
-- Ini membuat `KebunBinatang` sangat bergantung ke class `Kandang` secara langsung.
-
----
-
-## Kesimpulan
-
-| Prinsip | Status | Keterangan |
-|---------|--------|------------|
-| SRP | ❌ Dilanggar | Class Hewan & Kandang punya lebih dari 1 tanggung jawab |
-| OCP | ❌ Dilanggar | KebunBinatang harus diubah jika ada hewan baru |
-| LSP | ❌ Dilanggar | Subclass Ikan tidak cocok dengan method terbang() |
-| ISP | ❌ Dilanggar | Semua hewan dipaksa punya method terbang() |
-| DIP | ❌ Dilanggar | KebunBinatang bergantung langsung ke class Kandang |
-
-**Kesimpulan: Kode awal tidak memenuhi satupun prinsip SOLID dan perlu diperbaiki seluruhnya.**
+**Solusi:** Setiap subclass hanya implement kemampuan yang sesuai, sehingga bisa menggantikan parent class tanpa merusak logika program.
 
 ---
 
-## Struktur File
-- `hewan.py` - Kode awal sebelum SOLID
-- `solusi/` - Folder kode setelah diperbaiki tiap anggota
+### 4. ISP - Interface Segregation Principle
+**Pelanggaran:**
+- Semua hewan dipaksa punya method `terbang()` padahal tidak semua bisa terbang.
+
+**Solusi:** Pisahkan interface menjadi `BisaTerbang`, `BisaBerenang`, dan `BisaBerlari` sehingga hewan hanya implement yang sesuai.
+
+---
+
+### 5. DIP - Dependency Inversion Principle
+**Pelanggaran:**
+- `KebunBinatang` langsung membuat objek `Kandang()` di dalam constructor.
+- Bergantung ke class konkret, bukan abstraksi.
+
+**Solusi:** Buat abstraksi `KandangBase` dan inject `Kandang` lewat parameter constructor.
+
+---
+
+## ✅ Kesimpulan
+
+| Prinsip | Status Awal | Setelah Diperbaiki |
+|---------|-------------|-------------------|
+| SRP | ❌ Dilanggar | ✅ Tiap class punya 1 tanggung jawab |
+| OCP | ❌ Dilanggar | ✅ Pakai isinstance, tidak perlu ubah kode |
+| LSP | ❌ Dilanggar | ✅ Subclass hanya implement kemampuan sesuai |
+| ISP | ❌ Dilanggar | ✅ Interface dipisah per kemampuan |
+| DIP | ❌ Dilanggar | ✅ Bergantung ke abstraksi KandangBase |
+
+---
+
+## ▶️ Cara Menjalankan
+
+```bash
+cd solusi
+python main.py
+```
+
+---
+
+## 🔗 Link Repository
+
+https://github.com/fajriyahyulia/Kelompok4_AnalisisSolid_KelasB
