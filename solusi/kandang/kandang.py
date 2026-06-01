@@ -19,7 +19,7 @@ class KandangBase(ABC):
     @abstractmethod
     def bersihkan_kandang(self):
         pass
-
+        
 # SOLUSI SRP - Kandang hanya bertanggung jawab
 # menyimpan hewan dan membersihkan kandang
 class Kandang(KandangBase):
