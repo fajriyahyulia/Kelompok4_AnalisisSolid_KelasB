@@ -1,10 +1,10 @@
-# 🐾 Kelompok 4 - Analisis Prinsip SOLID
+# Kelompok 4 - Analisis Prinsip SOLID
 
 Proyek ini merupakan latihan analisis dan penerapan prinsip SOLID pada kode Python sederhana tentang sistem kebun binatang.
 
 ---
 
-## 👥 Anggota & Pembagian Tugas
+## Anggota & Pembagian Tugas
 
 | Nama | Branch | Tugas |
 |------|--------|-------|
@@ -17,7 +17,7 @@ Proyek ini merupakan latihan analisis dan penerapan prinsip SOLID pada kode Pyth
 
 ---
 
-## 📂 Struktur Folder
+## Struktur Folder
 
 ```
 Kelompok4_AnalisisSolid_KelasB/
@@ -44,7 +44,7 @@ Kelompok4_AnalisisSolid_KelasB/
 
 ---
 
-## 🔍 Kode Awal (Sebelum Diperbaiki)
+## Kode Awal (Sebelum Diperbaiki)
 
 ```python
 class Hewan:
@@ -75,7 +75,7 @@ class KebunBinatang:
 
 ---
 
-## ❌ Analisis Pelanggaran SOLID
+## Analisis Pelanggaran SOLID
 
 ### 1. SRP - Single Responsibility Principle
 **Pelanggaran:**
@@ -121,19 +121,19 @@ class KebunBinatang:
 
 ---
 
-## ✅ Kesimpulan
+## Kesimpulan
 
 | Prinsip | Status Awal | Setelah Diperbaiki |
 |---------|-------------|-------------------|
-| SRP | ❌ Dilanggar | ✅ Tiap class punya 1 tanggung jawab |
-| OCP | ❌ Dilanggar | ✅ Pakai isinstance, tidak perlu ubah kode |
-| LSP | ❌ Dilanggar | ✅ Subclass hanya implement kemampuan sesuai |
-| ISP | ❌ Dilanggar | ✅ Interface dipisah per kemampuan |
-| DIP | ❌ Dilanggar | ✅ Bergantung ke abstraksi KandangBase |
+| SRP |  Dilanggar |  Tiap class punya 1 tanggung jawab |
+| OCP |  Dilanggar |  Pakai isinstance, tidak perlu ubah kode |
+| LSP |  Dilanggar |  Subclass hanya implement kemampuan sesuai |
+| ISP |  Dilanggar |  Interface dipisah per kemampuan |
+| DIP |  Dilanggar |  Bergantung ke abstraksi KandangBase |
 
 ---
 
-## ▶️ Cara Menjalankan
+##  Cara Menjalankan
 
 ```bash
 cd solusi
@@ -142,6 +142,6 @@ python main.py
 
 ---
 
-## 🔗 Link Repository
+##  Link Repository
 
 https://github.com/fajriyahyulia/Kelompok4_AnalisisSolid_KelasB
