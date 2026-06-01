@@ -11,7 +11,7 @@ class KandangBase(ABC):
     @abstractmethod
     def tambah_hewan(self, hewan: Hewan):
         pass
-
+        
     @abstractmethod
     def get_semua_hewan(self):
         pass
