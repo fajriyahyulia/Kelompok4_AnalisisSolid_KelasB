@@ -17,11 +17,11 @@ class Perawatan:
         print("\n--- Merawat Semua Hewan ---")
         for hewan in self.kandang.get_semua_hewan():
             hewan.makan()
-            if isinstance(hewan, BisaTerbang):   # OCP - tidak paksa terbang()
+            if isinstance(hewan, BisaTerbang):   
                 hewan.terbang()
-            if isinstance(hewan, BisaBerenang):  # OCP - tidak paksa berenang()
+            if isinstance(hewan, BisaBerenang):  
                 hewan.berenang()
-            if isinstance(hewan, BisaBerlari):   # OCP - tidak paksa berlari()
+            if isinstance(hewan, BisaBerlari):  
                 hewan.berlari()
 
 
