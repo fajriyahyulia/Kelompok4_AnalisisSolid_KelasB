@@ -1,6 +1,6 @@
 # kebun_binatang.py
 # Class KebunBinatang - solusi OCP + DIP
-# Dikerjakan oleh: Wijang (OCP) & Abid (DIP)
+# Dikerjakan oleh: Wijang pratama (OCP) & Abid (DIP)
 
 from kandang.kandang import KandangBase
 from layanan.perawatan import Perawatan
