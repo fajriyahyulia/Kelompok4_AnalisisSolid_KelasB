@@ -28,7 +28,7 @@ class Kandang(KandangBase):
     def __init__(self, nama_kandang):
         self.nama_kandang = nama_kandang
         self.hewan_list = []
-
+        
     def tambah_hewan(self, hewan: Hewan):
         self.hewan_list.append(hewan)
         print(f"{hewan.nama} ditambahkan ke {self.nama_kandang}.")
