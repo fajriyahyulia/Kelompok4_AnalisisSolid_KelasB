@@ -1,6 +1,6 @@
 # kandang.py
 # Class Kandang - solusi SRP + DIP
-# Dikerjakan oleh: Viko
+# Dikerjakan oleh: Vicko
 
 from abc import ABC, abstractmethod
 from hewan.hewan import Hewan
