@@ -79,9 +79,26 @@ class Ikan(Hewan, BisaBerenang):
     def berenang(self):
         print(f"{self.nama} sedang berenang.")
 
+class Bebek(Unggas, BisaTerbang, BisaBerenang):
+    """Bebek inherit Unggas, implement BisaTerbang+BisaBerenang (ISP)"""
+    def terbang(self):
+        print(f"{self.nama} sedang terbang rendah.")
+    def berenang(self):
+        print(f"{self.nama} sedang berenang.")
+
+class Sapi(Mamalia, BisaBerlari):
+    """Sapi inherit Mamalia, implement BisaBerlari (ISP)"""
+    def berlari(self):
+        print(f"{self.nama} sedang berlari pelan.")
+
 class Penyu(Hewan, BisaBerenang):
     """ISP: Penyu tidak dipaksa terbang, hanya berenang"""
     def makan(self):
         print(f"{self.nama} sedang makan.")
     def berenang(self):
         print(f"{self.nama} sedang berenang pelan.")
+
+class Burung(Unggas, BisaTerbang):
+    """Burung inherit Unggas, implement BisaTerbang (ISP)"""
+    def terbang(self):
+        print(f"{self.nama} sedang terbang.")
