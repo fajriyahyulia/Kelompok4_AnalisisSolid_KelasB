@@ -10,8 +10,7 @@ class KandangBase(ABC):
     """Interface/abstraksi untuk semua jenis kandang"""
     @abstractmethod
     def tambah_hewan(self, hewan: Hewan):
-        pass
-
+        pass 
     @abstractmethod
     def get_semua_hewan(self):
         pass
