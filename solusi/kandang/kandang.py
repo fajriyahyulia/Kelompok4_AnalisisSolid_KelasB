@@ -14,7 +14,7 @@ class KandangBase(ABC):
     @abstractmethod
     def get_semua_hewan(self):
         pass
-
+        
     @abstractmethod
     def bersihkan_kandang(self):
         pass
